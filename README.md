@@ -20,7 +20,7 @@ An example usage of this image may look as follows (docker-compose):
 version: '3'
 services:
   mail-downloader:
-    image: thej6s/mail-downloader
+    image: thej6s/mail-downloader:mail
     environment:
       - 'SMTP_SERVER=mail.myprovider.com'
       - 'SMTP_USER=...'
@@ -30,4 +30,20 @@ services:
     volumes:
       - './.data/getmail:/getmail'
       - './.data/out:/out'
+```
+
+Or as follows (bash script)
+
+```bash
+#!/bin/bash
+
+mkdir -p $HOME/.getmail
+docker run --rm \
+	-e 'SMTP_SERVER=mail.myprovider.com' \
+	-e 'SMTP_USER=...' \
+	-e 'SMTP_PASSWORD=...' \
+	-e 'RULE=From: notes@me.com' \
+	-v "$HOME/.getmail:/getmail" \
+	-v "$HOME/notes:/out" \
+	thej6s/mail-downloader:main
 ```
