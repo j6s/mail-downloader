@@ -1,0 +1,27 @@
+# ~/.getmail/getmailrc
+# Configuration file to retrieve messages over secure IMAP
+# and send them to procmail
+
+[retriever]
+type=SimpleIMAPSSLRetriever
+server=__SMTP_SERVER__
+username=__SMTP_USER__
+password=__SMTP_PASSWORD__
+
+[destination]
+type=MDA_external
+path=/usr/bin/procmail
+arguments=("__PROCMAILRC_PATH__",)
+ignore_stderr=true
+
+[options]
+verbose=1
+read_all=false
+delete=false
+delete_after=0
+delete_bigger_than=0
+max_bytes_per_session=0
+max_message_size=0
+max_messages_per_session=0
+delivered_to=false
+received=false
