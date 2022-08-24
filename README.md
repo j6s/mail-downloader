@@ -13,6 +13,8 @@ This image assumes, that the following volumes are mounted:
 Additionally, the following environment variables must be supplied:
 * `SMTP_SERVER`, `SMTP_USER`, `SMTP_PASSWORD`
 * `RULE`: The procmailrc rule filtering the mails (e.g. `From: foo@bar.com`, `Reply-Top: foobar@test.com`)
+  * See https://linux.die.net/man/5/procmailex
+* `KEEP_BODY=1` can be used in order to keep the body of the mail. By default only attachments are being downloaded
 
 An example usage of this image may look as follows (docker-compose):
 
