@@ -33,7 +33,7 @@ cat ${PROCMAILRC_PATH}
 
 getmail --rcfile=${GETMAILRC_PATH} --getmaildir=${TMP_DIR} -vvv
 
-if [ "${KEEP_BODY}" != "1" ]; then
+if [ "${KEEP_BODY:-0}" != "1" ]; then
 	for f in $(find ${OUT_DIR} -iname 'part*'); do
 		rm -v "${f}"
 	done;
